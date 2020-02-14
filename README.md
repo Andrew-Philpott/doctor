@@ -5,13 +5,16 @@
 _DoctorsNearMe provides information on doctors in a given area._
 
 ## Specs
-* _Spec: ._
-  * Input: 
-  * Output: 
+* _Spec: The program should be able to find the geographical coordinates of a city state combination._
+  * Input: Portland, Oregon
+  * Output: 45.5202471 -122.6741949
+
+
 
 ## Setup/Installation Requirements
 _Clone this repository._
 _npm install_
+_npm install dotenv-webpack --save-dev_
 _npm run start_
 
 ## Support and contact details
