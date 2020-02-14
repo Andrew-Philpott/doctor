@@ -5,10 +5,21 @@
 _DoctorsNearMe provides information on doctors in a given area._
 
 ## Specs
-* _Spec: The program should be able to find the geographical coordinates of a city state combination._
+* _Spec: The program should be able to allow a user to enter a city state combination._
+  * Input: Portland, Oregon
+  * Output: Portland, Oregon
+
+* _Spec: The program should be able to allow a user to select a medical issue._
+  * Input: Cancer
+  * Output: Cancer
+
+* _Spec: The program should be able to find the geographical coordinates of a city state combination through an API call._
   * Input: Portland, Oregon
   * Output: 45.5202471 -122.6741949
 
+* _Spec: The program should be able to find doctors for a city state combination that are able to treat the user defined medical issues._
+  * Input: Portland, Oregon. Cancer.
+  * Output: 5 doctors
 
 
 ## Setup/Installation Requirements

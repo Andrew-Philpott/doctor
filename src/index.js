@@ -8,6 +8,7 @@ import { DoctorService } from './js/doctorService';
 $(document).ready(function() {
   $("#find-doctors").click(function() {
     let inputtedCity = $("#city-input").val();
+    let inputtedMedicalIssue = $("#medical-issue-input").val();
     (async () => {
       const geocodeService = new GeocodeService();
       const geocodeResponse = await geocodeService.asyncCoordinatesForCity(inputtedCity);
@@ -16,9 +17,9 @@ $(document).ready(function() {
       let xCoord = geocodeResponse[0].lon;
       let coords = [yCoord, xCoord];
       console.log(xCoord, yCoord);
-      // const doctorService = new DoctorService();
-      // const doctorResponse = await doctorService.asyncDoctorsForCityCall(coords);
-      // console.log(doctorResponse);
+      const doctorService = new DoctorService();
+      const doctorResponse = await doctorService.asyncDoctorsForCityCall(inputtedMedicalIssue, coords);
+      console.log(doctorResponse);
     })();
   })
 });

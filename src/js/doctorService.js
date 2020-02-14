@@ -3,7 +3,7 @@ export class DoctorService {
 
   }
 
-  async asyncDoctorsForCityCall(medicalIssues, coordinates) {
+  async asyncDoctorsForMedicalIssuesForCityCall(medicalIssues, coordinates) {
     const medicalIssuesEncoded = encodeURIComponent(medicalIssues);
     const coordinatesEncoded = encodeURIComponent(coordinates);
     try {
