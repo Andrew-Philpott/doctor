@@ -75,3 +75,9 @@ export function createAllDoctors(response) {
   doctorsContainer.appendChild(doctorsFragmet);
 }
 //address, phone, website, new patients?
+export function displayZeroMatchesMessage() {
+  const error = document.getElementById("error");
+  let errorMessage = document.createElement("p");
+  errorMessage.innerHTML = "No available doctors matching that query";
+  error.appendChild(errorMessage);
+}

@@ -4,13 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import { GeocodeService } from './js/geocodeService';
 import { DoctorService } from './js/doctorService';
-import { createAllDoctors, createAllDoctorsContainerHtml } from './js/interface-logic';
+import { createAllDoctors, createAllDoctorsContainerHtml, displayZeroMatchesMessage } from './js/interface-logic';
 
 $(document).ready(function() {
   $("#find-doctors").click(function() {
+    let doctorsContainer = document.getElementById("doctors-container");
+    if(doctorsContainer) {
+      doctorsContainer.remove();
+    }
+    createAllDoctorsContainerHtml();
     let inputtedCity = $("#city-input").val();
     let inputtedMedicalIssue = $("#medical-issue-input").val();
     let inputtedDoctorName =  $("#doctor-name-input").val();
+    $("#city-input").val("");
+    $("#medical-issue-input").val();
+    $("#doctor-name-input").val();
     (async () => {
       const geocodeService = new GeocodeService();
       const geocodeResponse = await geocodeService.asyncCoordinatesForCity(inputtedCity);
@@ -24,13 +32,10 @@ $(document).ready(function() {
       } else {
         doctorResponse = await doctorService.asyncDoctorsForMedicalIssuesForCityCall(coords, inputtedDoctorName);
       }
-      // doctorResponse = await doctorService.asyncDoctorsForMedicalIssuesForCityCall(inputtedMedicalIssue, coords);
-     // console.log(doctorResponse);
-      createAllDoctorsContainerHtml();
+      if(doctorResponse.data.length === 0) {
+        displayZeroMatchesMessage();
+      }
       createAllDoctors(doctorResponse);
-      //console.log(doctors.length);
-      //const doc = await doctorService.asyncDoctorsWithMatchingNameForCityCall(coords);
-    //console.log(doc);
     })();
   })
 });

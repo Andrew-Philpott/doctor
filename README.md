@@ -10,8 +10,12 @@ _DoctorsNearMe provides information on doctors in a given area._
   * Output: Dentists in Portland that can treat a tooth ache.
 
 * _Spec: The program should be able to filter doctors based on location and name._
-  * Input: Portland, Oregon. Bob Jason
-  * Output: Bob Jason
+  * Input: Portland, Oregon. Bob Jason.
+  * Output: 5x Bob Jason.
+
+* _Spec: The program should be able to filter doctors based on location, medical issue, and name._
+  * Input: Portland, Oregon. Bob Jason. Tooth Ache.
+  * Output: 1x Bob Jason. 
 
 ## Setup/Installation Requirements
 _Clone this repository._
