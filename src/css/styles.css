@@ -1,0 +1,11 @@
+.container {
+  border: 2px solid red;
+  height: 100%;
+}
+
+.doctor {
+  height: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
