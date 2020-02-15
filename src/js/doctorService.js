@@ -1,3 +1,5 @@
+import { displayHttpRequestFailure } from './interface-logic.js';
+
 export class DoctorService {
   constructor() {
 
@@ -11,12 +13,11 @@ export class DoctorService {
       if(response.ok && response.status == 200) {
         jsonResponse = await response.json();
       } else {
-        jsonResponse = false;
+        throw new Error(response.statusText);
       }
       return jsonResponse;
     } catch (error) {
-      console.log(error);
-      return false; 
+      displayHttpRequestFailure(error.message);
     }
   }
   async asyncDoctorsWithMatchingNameForCityCall(coordinates, name) {
@@ -28,13 +29,11 @@ export class DoctorService {
       if(response.ok && response.status == 200) {
         jsonResponse = await response.json();
       } else {
-        jsonResponse = false;
+        throw new Error(response.statusText);
       }
-      console.log(jsonResponse);
       return jsonResponse;
     } catch (error) {
-      console.log(error);
-      return false; 
+      displayHttpRequestFailure(error.message);
     }
   }
   async asyncDoctorsForMedicalIssuesWithMatchingNameForCityCall(coordinates, medicalIssues, name) {
@@ -47,13 +46,11 @@ export class DoctorService {
       if(response.ok && response.status == 200) {
         jsonResponse = await response.json();
       } else {
-        jsonResponse = false;
+        throw new Error(response.statusText);
       }
-      console.log(jsonResponse);
       return jsonResponse;
     } catch (error) {
-      console.log(error);
-      return false; 
+      displayHttpRequestFailure(error.message);
     }
   }
 }

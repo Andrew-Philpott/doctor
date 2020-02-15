@@ -14,14 +14,14 @@ export function createDoctorContainerHtml() {
 
 export function createDoctorFirstNameHtml(doctor) {
   let doctorFirstName = document.createElement("p");
-  doctorFirstName.innerHTML = `Name: ${doctor.profile.first_name}`;
+  doctorFirstName.innerHTML = `First Name: ${doctor.profile.first_name}`;
   doctorFirstName.classList.add("first-name");
   return doctorFirstName;
 }
 
 export function createDoctorLastNameHtml(doctor) {
   let doctorLastName = document.createElement("p");
-  doctorLastName.innerHTML = doctor.profile.last_name;
+  doctorLastName.innerHTML = `Last Name: ${doctor.profile.last_name}`;
   doctorLastName.classList.add("last-name");
   return doctorLastName;
 }
@@ -91,5 +91,12 @@ export function displayZeroMatchesMessage() {
   let errorMessage = document.createElement("p");
   errorMessage.innerHTML = "No available doctors matching that query";
   errorMessage.id = "zero-matches";
+  error.appendChild(errorMessage);
+}
+
+export function displayHttpRequestFailure(message) {
+  const error = document.getElementById("error"); 
+  let errorMessage = document.createElement("p");
+  errorMessage.innerHTML = message;
   error.appendChild(errorMessage);
 }

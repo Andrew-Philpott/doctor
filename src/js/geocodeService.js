@@ -1,3 +1,5 @@
+import { displayHttpRequestFailure } from './interface-logic.js';
+
 export class GeocodeService {
   constructor() {
 
@@ -11,12 +13,11 @@ export class GeocodeService {
     if(response.ok && response.status == 200) {
       jsonResponse = await response.json();
     } else {
-      jsonResponse = false;
+      throw new Error(response.statusText);
     }
     return jsonResponse;
     } catch (error) {
-      console.log(error);
-      return false;    
+      displayHttpRequestFailure(error.message);  
     }
   }
 }
