@@ -14,31 +14,40 @@ export function createDoctorContainerHtml() {
 
 export function createDoctorFirstNameHtml(doctor) {
   let doctorFirstName = document.createElement("p");
-  doctorFirstName.innerHTML = doctor.profile.first_name;
+  doctorFirstName.innerHTML = `Name: ${doctor.profile.first_name}`;
+  doctorFirstName.classList.add("first-name");
   return doctorFirstName;
 }
 
 export function createDoctorLastNameHtml(doctor) {
   let doctorLastName = document.createElement("p");
   doctorLastName.innerHTML = doctor.profile.last_name;
+  doctorLastName.classList.add("last-name");
   return doctorLastName;
 }
 
 export function createDoctorNumberHtml(doctor) {
   let doctorNumber = document.createElement("p");
-  doctorNumber.innerHTML = doctor.practices[0].phones[0].number;
+  doctorNumber.innerHTML = "Phone: " + doctor.practices[0].phones[0].number;
   return doctorNumber;
+}
+
+export function createDoctorAddressHtml(doctor) {
+  let address = doctor.practices[0].visit_address;
+  let doctorAddress = document.createElement("p");
+  doctorAddress.innerHTML = `Address: ${address.street} ${address.city}, ${address.state} ${address.zip}`;
+  return doctorAddress;
 }
 
 export function createDoctorWebsiteHtml(doctor) {
   let doctorWebsite = document.createElement("p");
-  doctorWebsite.innerHTML = doctor.practices[0].website;
+  doctorWebsite.innerHTML = "Website: " + doctor.practices[0].website;
   return doctorWebsite;
 }
 
 export function createDoctorAcceptingNewPatientsHtml(doctor) {
   let doctorAcceptingPatients = document.createElement("p");
-  doctorAcceptingPatients.innerHTML = doctor.practices[0].accepts_new_patients;
+  doctorAcceptingPatients.innerHTML = "Accepting new patients: " + doctor.practices[0].accepts_new_patients;
   return doctorAcceptingPatients;
 }
 
@@ -47,12 +56,14 @@ export function createDoctor(doctor) {
   let doctorContainer = createDoctorContainerHtml(doctor);
   let doctorFirstNameHtml = createDoctorFirstNameHtml(doctor);
   let doctorLastNameHtml = createDoctorLastNameHtml(doctor);
+  let doctorAddress = createDoctorAddressHtml(doctor);
   let doctorNumberHtml = createDoctorNumberHtml(doctor);
   let doctorAcceptingPatients = createDoctorAcceptingNewPatientsHtml(doctor);
   
   doctorFragment.appendChild(doctorContainer);
   doctorContainer.appendChild(doctorFirstNameHtml);
   doctorContainer.appendChild(doctorLastNameHtml);
+  doctorContainer.appendChild(doctorAddress);
   doctorContainer.appendChild(doctorNumberHtml);
   
   let doctorWebsiteHtml;
@@ -79,5 +90,6 @@ export function displayZeroMatchesMessage() {
   const error = document.getElementById("error");
   let errorMessage = document.createElement("p");
   errorMessage.innerHTML = "No available doctors matching that query";
+  errorMessage.id = "zero-matches";
   error.appendChild(errorMessage);
 }

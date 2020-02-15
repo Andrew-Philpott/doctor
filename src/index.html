@@ -10,18 +10,24 @@
     <div class="row">
       <div class="col-12">
         <div id="user-input-container">
-          <h2>Find doctors in your area that can help you with your medical issue.</h2>
-            <div class="user-input">
+          <div class="jumbotron">
+            <h1>Search Doctors</h1>
+            <p class="lead">
+              Find doctors in your area by using the form below. Search doctors by location, medical issue, or name. Location must be selected.
+            </p>
+          </div>
+          <h2></h2>
+            <div class="user-input form-group">
               <label for="city-input">City</label>
-              <input type="text" id="city-input" placeholder="Portland, Oregon">
+              <input class="form-control"type="text" id="city-input" placeholder="Portland, Oregon">
             </div>
-            <div class="user-input">
+            <div class="user-input form-group">
               <label for="medical-issue-input">Medical Issue</label>
-              <input type="text" id="medical-issue-input" placeholder="Dry Mouth">
+              <input class="form-control"type="text" id="medical-issue-input" placeholder="Dry Mouth">
             </div>
-            <div class="user-input">
+            <div class="user-input form-group">
               <label for="doctor-name-input">Name of Doctor</label>
-              <input type="text" id="doctor-name-input">
+              <input class="form-control"type="text" id="doctor-name-input">
             </div>
             <button id="find-doctors" type="button">Find Doctors</button>
             <div id="error"></div>
